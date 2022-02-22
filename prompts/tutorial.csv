@@ -1,0 +1,4 @@
+﻿match any binary string,
+1,abc
+0,1a0
+1000110,12
