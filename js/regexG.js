@@ -63,7 +63,6 @@ function loadNext() {
     curr[1]++;
 
     // load next prompt
-    // doGetPrompt('https://raw.githubusercontent.com/yin132/regex-game/main/prompts/binary/binary-1.txt');
     doGetPrompt('https://raw.githubusercontent.com/yin132/regex-game/main/prompts/' +
         promptCat[curr[0]] + '/' + promptDir[[curr[0]]][curr[1]] + '.txt');
     promptText.innerHTML = 'Loading next prompt...';
@@ -145,5 +144,6 @@ function loadPromptDir() {
             }
             promptDir[cat].push(buf[i]);
         }
+        loadNext();
     });
 }
