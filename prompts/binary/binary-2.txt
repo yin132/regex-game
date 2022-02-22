@@ -1,0 +1,9 @@
+Match an even binary number
+MATCH
+010
+0
+1101010
+NOT
+100 10
+01101
+100102
