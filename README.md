@@ -3,7 +3,6 @@
 A website to practice writing RegEx to prompts.
 
 TODO: <br>
-load prompts<br>
 add more prompts<br>
 add help reference<br>
 add timer<br>
