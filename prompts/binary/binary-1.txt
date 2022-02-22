@@ -1,0 +1,9 @@
+Match one binary number
+MATCH
+1
+0
+10010
+NOT
+abc
+012
+1 0
