@@ -1,0 +1,8 @@
+Use characters to directly match the word cat
+MATCH
+cat
+NOT
+bat
+can
+cats
+1234

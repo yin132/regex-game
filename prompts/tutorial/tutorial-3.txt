@@ -1,0 +1,10 @@
+Use '*' to match a character any number of times
+MATCH
+ct
+cat
+caaaat
+caaaaaaat
+NOT
+rat
+cats
+chaaats

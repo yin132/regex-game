@@ -1,0 +1,13 @@
+Use the '.' to match to any character
+MATCH
+cat
+rat
+bat
+hat
+mat
+sat
+NOT
+chat
+cats
+computer science
+110
