@@ -1,0 +1,16 @@
+.btn-nav {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #fff;
+    padding: 0.7rem 1rem;
+}
+
+.navbar-toggler-icon-cust{
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
