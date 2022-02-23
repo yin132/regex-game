@@ -5,17 +5,18 @@ const promptText = document.getElementById("prompt");
 const counter = document.getElementById("counter");
 const sub = document.getElementById("subBtn");
 const nxt = document.getElementById("nxtBtn");
+const nMenu = document.getElementById("navMenu");
 
-var inText = '';
-var inRegex = /^$/;
-var count = 0;
+let inText = '';
+let inRegex = /^$/;
+let count = 0;
 
-var promptCat = [];
-var promptDir = [[]];
-var curr = [0, -1];
-var promptStr = '';
-var toMatch = [];
-var toNotMatch = [];
+let promptCat = [];
+let promptDir = [[]];
+let curr = [0, 0];
+let promptStr = '';
+let toMatch = [];
+let toNotMatch = [];
 
 init();
 
@@ -26,6 +27,8 @@ function init() {
         if (e.which == 13) { // Enter key
             readRegex();
             return false;
+        } else {
+            readRegex();
         }
     });
 }
@@ -39,51 +42,74 @@ function readRegex() {
     counter.innerHTML = count;
 
     clearCase();
-    for (var s of toMatch) {
+    for (let s of toMatch) {
         (inRegex.test(s)) ? s = '\u2713 ' + s : s = '\u274C' + s;
         addCase(s, match);
     }
 
-    for (var s of toNotMatch) {
+    for (let s of toNotMatch) {
         (inRegex.test(s)) ? s = '\u2713 ' + s : s = '\u274C' + s;
         addCase(s, notMatch);
     }
 }
 
-function loadNext() {
+function onPrev() {
+    setPrevPrompt();
+    loadCurr();
+}
+
+function onNext() {
+    setNextPrompt();
+    loadCurr();
+}
+
+function setPrevPrompt() {
+    // select previous prompt
+    curr[1]--;
+
+    if (curr[1] < 0) {
+        curr[0]--;
+        if (curr[0] < 0) {
+            curr[0] = promptCat.length - 1;
+        }
+        curr[1] = promptDir[curr[0]].length - 1;
+    }
+}
+
+function setNextPrompt() {
     // select next prompt
     if (curr[1] + 1 >= promptDir[curr[0]].length) {
         curr[0]++;
         curr[1] = -1;
     }
-    if(curr[0] >= promptCat.length){
+    if (curr[0] >= promptCat.length) {
         curr[0] = 0;
         curr[1] = -1;
     }
     curr[1]++;
+}
 
-    // load next prompt
+function loadCurr() {
+    // load current prompt
     doGetPrompt('https://raw.githubusercontent.com/yin132/regex-game/main/prompts/' +
         promptCat[curr[0]] + '/' + promptDir[[curr[0]]][curr[1]] + '.txt');
     promptText.innerHTML = 'Loading next prompt...';
 }
 
-function loadingNext(pfile) {
-    pfile = pfile.replaceAll('[\r]','');
-    var buf = pfile.split('\n');
+function loadingCurr(pfile) {
+    pfile = pfile.replaceAll('\r', '');
+    let buf = pfile.split('\n');
+    console.log(buf);
     promptStr = buf[0];
-    var i;
     toMatch = [];
     toNotMatch = [];
-    for (i = 2; i < buf.length; i++) {
-        buf[i] = buf[i].replaceAll('\r','');
+    for (var i = 2; i < buf.length; i++) {
         if (/NOT/.test(buf[i])) {
             break;
         }
         toMatch.push(buf[i]);
     }
     for (++i; i < buf.length; i++) {
-        buf[i] = buf[i].replaceAll('\r','');
         toNotMatch.push(buf[i]);
     }
 
@@ -116,7 +142,7 @@ function doGetPrompt(url) {
         }
         return response.text();
     }).then(text => {
-        loadingNext(text);
+        loadingCurr(text);
     });
 }
 
@@ -127,7 +153,7 @@ function loadPromptDir() {
         }
         return response.text();
     }).then(text => {
-        text = text.replaceAll('\r','');
+        text = text.replaceAll('\r', '');
         var buf = text.split('\n');
         var cat = -1;
         console.log(buf);
@@ -135,7 +161,6 @@ function loadPromptDir() {
             if (buf[i] === '') {
                 continue;
             }
-            buf[i] = buf[i].replaceAll('\r','');
             if (/CATEGORY/.test(buf[i])) {
                 cat++;
                 promptCat.push(buf[++i]);
@@ -144,6 +169,30 @@ function loadPromptDir() {
             }
             promptDir[cat].push(buf[i]);
         }
-        loadNext();
+        loadCurr();
+        loadNav();
     });
+}
+
+function loadPrompt(c, p) {
+    curr = [c, p];
+    loadCurr();
+}
+
+function loadNav() {
+    $('#' + nMenu.id).children('li').remove();
+    for (let i = 0; i < promptCat.length; i++) {
+        $('#' + nMenu.id).append(`<li class="mb-1">
+        <a href="#`+ promptCat[i] + `" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+            <span class="ms-1 d-none d-sm-inline">`+ promptCat[i] + `</span> </a>
+        <ul class="collapse show nav flex-column ms-1" id="`+ promptCat[i] + `">
+        </ul>
+    </li>`);
+        for (let k = 0; k < promptDir[i].length; k++) {
+            $('#' + promptCat[i]).append(`<li style="padding-left: 15px">
+                    <a href="#" onclick="loadPrompt(`+ i + `,` + k + `)"
+                    class="nav-link px-0"> <span class="d-none d-sm-inline">`+ promptDir[i][k] + `</span></a>
+                </li>`);
+        }
+    }
 }
