@@ -19,10 +19,10 @@
     <div class="row flex-nowrap">
       <nav class="col-auto px-0">
         <div id="sidebar" class="collapse collapse-horizontal show border-end" style="min-width: 240px">
-          <div id="sidebar-nav" class="flex-shrink-0 p-3 bg-white list-group min-vh-100">
+          <div id="sidebar-nav" class="flex-shrink-0 p-4 bg-white list-group min-vh-100">
 
             <a href="#" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom""
-              data-bs-parent=" #sidebar"><span class="fs-5 fw-semibold">Prompts</span></a>
+              data-bs-parent=" #sidebar" style="padding-top: 10px;"><span class="fs-5 fw-semibold">Prompts</span></a>
 
             <ul id="navMenu" class="list-unstyled ps-0">
               <!-- auto populated -->
@@ -31,9 +31,9 @@
                   <span class="ms-1 d-none d-sm-inline">tutorial</span> </a>
                 <ul class="collapse show nav flex-column ms-1" id="tutorial">
                   <li style="padding-left: 15px">
-                    <a href="#" onclick="loadPrompt(0,0)"
-                    class="nav-link px-0"> <span class="d-none d-sm-inline">tutorial-1</span></a>
-                </li>
+                    <a href="#" onclick="loadPrompt(0,0)" class="nav-link px-0"> <span
+                        class="d-none d-sm-inline">tutorial-1</span></a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -50,6 +50,12 @@
                   <i class="fa fa-bars fa-2xl"></i>
                 </button>
               </div>
+              <div data-inline="true" style="float: right">
+                <button type="button" data-bs-target="#ref" data-bs-toggle="modal" class="btn btn-nav"
+                  aria-haspopup="true">
+                  <i class="fa fa-question-circle fa-2xl"></i>
+                </button>
+              </div>
               <h1>Regex Practice</h1>
             </div>
 
@@ -63,10 +69,12 @@
                     <p style="font-size: 18px" class="font-weight-bold;">
                       cases to match
                     </p>
+                    <!-- auto populated -->
                     <div>case 1</div>
                   </td>
                   <td id="notMatch" style="padding: 10px">
                     <p style="font-size: 18px" clasee="font-weight-bold;">cases to NOT match</p>
+                    <!-- auto populated -->
                     <div>case 2</div>
                   </td>
 
@@ -91,6 +99,116 @@
           </div>
         </div>
       </main>
+    </div>
+  </div>
+
+  <div id="ref" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-body">
+          <table id="refTable" class="table table-striped" cellspacing="0" cellpadding="3">
+            <thead>
+              <tr>
+              <th>Character(s)</th>
+              <th>Description</th>
+              <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>.</td>
+                <td>Matches any character</td>
+                <td>.at ={&quot;aat&quot;, &quot;bat&quot;, ...}</td>
+              </tr>
+              <tr>
+                <td>[ ]</td>
+                <td>Matches one character from those listed</td>
+                <td>[cbr]at = {&quot;cat&quot;, &quot;bat&quot;, &quot;rat&quot;}</td>
+              </tr>
+              <tr>
+                <td>[ - ]</td>
+                <td>Matches one character from the range of characters listed</td>
+                <td>[a-c]at = {&quot;bat&quot;, &quot;cat&quot;, &quot;dat&quot;}</td>
+              </tr>
+              <tr>
+                <td>[^ ]</td>
+                <td>Matches one character from those not listed</td>
+                <td>[^b-d]at = {&quot;aat&quot;, &quot;eat&quot;, &quot;fat&quot;, ...}</td>
+              </tr>
+              <tr>
+                <td>|</td>
+                <td>Matches one item from those separated by pipes |</td>
+                <td>(ph|meerk|r)at = {&quot;phat&quot;, &quot;meerkat&quot;, &quot;rat&quot;}</td>
+              </tr>
+              <tr>
+                <td>*</td>
+                <td>Repeat the previous item 0 or many times</td>
+                <td>ca*t = {&quot;ct&quot;, &quot;cat&quot;, &quot;caat&quot;, ...}</td>
+              </tr>
+              <tr>
+                <td>+</td>
+                <td>Repeat the previous item 1 or many times</td>
+                <td>ca+t = {&quot;cat&quot;, &quot;caat&quot;, ...}</td>
+              </tr>
+              <tr>
+                <td>?</td>
+                <td>Repeat the previous item 0 or 1 time</td>
+                <td>ca?t = {&quot;ct&quot;, &quot;cat&quot;}</td>
+              </tr>
+              <tr>
+                <td>{#}</td>
+                <td>Repeat the previous item an exact number of times</td>
+                <td>ca{3}t = {&quot;caaat&quot;}</td>
+              </tr>
+              <tr>
+                <td>{#,}</td>
+                <td>Repeat the previous item a min number of times</td>
+                <td>ca{2,}t = {&quot;caat&quot;, &quot;caaat&quot;, ...}</td>
+              </tr>
+              <tr>
+                <td>{#,#}</td>
+                <td>Repeat the previous item between a min and max number of times</td>
+                <td>ca{1,3}t = {&quot;cat&quot;, &quot;caat&quot;, &quot;caaat&quot;}</td>
+              </tr>
+              <tr>
+                <td>\</td>
+                <td>Escape a special character, or indicate special symbol</td>
+                <td>\.+at = {&quot;.at&quot;, &quot;..at&quot;, ...}</td>
+              </tr>
+              <tr>
+                <td>\d</td>
+                <td>Equivalent to [0-9]: Matches any digit</td>
+                <td>\d = {&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, ...}</td>
+              </tr>
+              <tr>
+                <td>\D</td>
+                <td>Equivalent to [^0-9]: Matches any non-digit</td>
+                <td>\D = {&quot;a&quot;, &quot;b&quot;, &quot;-&quot;, ...}</td>
+              </tr>
+              <tr>
+                <td>\s</td>
+                <td>Matches white space character</td>
+                <td>\s = {&quot; &quot;}</td>
+              </tr>
+              <tr>
+                <td>\S</td>
+                <td>Matches a non-white space character</td>
+                <td>\S = {&quot;a&quot;, &quot;0&quot;, &quot;-&quot;, ...}</td>
+              </tr>
+              <tr>
+                <td>\w</td>
+                <td>Equivalent to [a-zA-Z0-9_]: Matches a "word" character</td>
+                <td>\w = {&quot;_&quot;, &quot;a&quot;, &quot;1&quot;, ...}</td>
+              </tr>
+              <tr>
+                <td>\W</td>
+                <td>Equivalent to [^a-zA-Z0-9_]: Matches a non-word character</td>
+                <td>\W = {&quot;-&quot;, &quot;.&quot;, &quot;=&quot;, ...}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
   <!-- <div class="container-fluid p-5">
