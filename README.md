@@ -6,10 +6,10 @@ A website to practice writing RegEx to prompts.
 ## features
 * Check regex against test suit
 * Navigate through prompts
+* Quick access regex reference
 
 TODO: <br>
 add more prompts<br>
-add help reference<br>
 add timer<br>
 add char limit goals<br>
 add custom prompts<br>
