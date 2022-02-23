@@ -6,6 +6,8 @@ const counter = document.getElementById("counter");
 const sub = document.getElementById("subBtn");
 const nxt = document.getElementById("nxtBtn");
 const nMenu = document.getElementById("navMenu");
+const ref = document.getElementById('ref')
+const refBtn = document.getElementById('refBtn')
 
 let inText = '';
 let inRegex = /^$/;
@@ -31,6 +33,12 @@ function init() {
             readRegex();
         }
     });
+
+
+
+ref.addEventListener('shown.bs.modal', function () {
+  refBtn.focus()
+})
 }
 
 function readRegex() {
