@@ -1,0 +1,11 @@
+'[a-z]' can be used to choose any character between (inclusive) the two characters for letters or numbers
+MATCH
+bat
+cat
+dat
+gat
+NOT
+aat
+hat
+zat
+bats

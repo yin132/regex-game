@@ -1,10 +1,11 @@
-Use '*' to match a character any number of times
+Use '*' to match the previous character any number of times
 MATCH
 ct
 cat
 caaaat
 caaaaaaat
 NOT
+ccaat
 rat
 cats
 chaaats

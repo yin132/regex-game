@@ -1,0 +1,9 @@
+Brackets '[]' can be used to choose exactly one character (you cannot use parentheses inside a [])
+MATCH
+bobcat
+bobrat
+bobmat
+NOT
+bobpat
+cat
+bobat

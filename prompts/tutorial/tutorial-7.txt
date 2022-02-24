@@ -1,0 +1,7 @@
+Use '{#}' to match the previous character exactly # times
+MATCH
+caaaat
+NOT
+cat
+caaat
+caaaaat

@@ -1,0 +1,11 @@
+Match a binary string that is has an odd number of 1s
+MATCH
+1
+001
+0100110
+10001110011001
+NOT
+0
+11
+1001
+0010001001010111001

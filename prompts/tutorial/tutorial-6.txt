@@ -1,0 +1,8 @@
+Use '?' to match the previous character zero or one time
+MATCH
+ct
+cat
+NOT
+caat
+ccat
+rat

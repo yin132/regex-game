@@ -1,0 +1,11 @@
+'[^ ]' can be used to choose any character not inside the brackets
+MATCH
+bob@at
+bobsat
+bob-at
+bob6at
+NOT
+bobcat
+bobrat
+bobmat
+bob@ats

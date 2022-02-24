@@ -1,0 +1,6 @@
+'\' can be used to escape a previous special character
+MATCH
+.*[\
+NOT
+cats
+1010

@@ -1,0 +1,10 @@
+The pipe '|' can be used to choose exactly one option
+MATCH
+blue
+red
+green
+NOT
+bluered
+redgreen
+yellow
+blues

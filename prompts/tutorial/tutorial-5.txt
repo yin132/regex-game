@@ -1,0 +1,10 @@
+Use '+' to match the previous character at least once
+MATCH
+cat
+caaaat
+caaaaaaat
+NOT
+ct
+ccat
+rat
+chaaats

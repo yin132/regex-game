@@ -1,0 +1,12 @@
+Match the cases by using '*', '+', '?', and '{#}'
+MATCH
+cccaats
+cccaaa
+cccaaaaaaaat
+cccatsss
+NOT
+ccaat
+cccts
+cccatts
+cccar
+bobcccats

@@ -1,4 +1,4 @@
-Use the '.' to match to any character
+Use '.' to match to any character
 MATCH
 cat
 rat

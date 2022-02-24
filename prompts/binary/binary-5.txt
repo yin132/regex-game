@@ -1,0 +1,9 @@
+Match a binary string that is an odd length
+MATCH
+0
+10100
+100111011
+NOT
+10
+102
+01100111

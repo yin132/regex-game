@@ -1,0 +1,9 @@
+'{#,#}' matches the previous character a number of times between the two numbers
+MATCH
+caat
+caaat
+caaaaat
+NOT
+cat
+caaaaaat
+caats

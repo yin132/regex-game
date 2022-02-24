@@ -1,0 +1,9 @@
+Parentheses '()'  can group characters together
+MATCH
+cat
+catcat
+catcatcatcatcat
+NOT
+caat
+cacat
+bobcatsbobcats
