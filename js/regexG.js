@@ -78,6 +78,7 @@ function onNext() {
 }
 
 function setPrevPrompt() {
+    deselect();
     // select previous prompt
     curr[1]--;
 
@@ -91,6 +92,7 @@ function setPrevPrompt() {
 }
 
 function setNextPrompt() {
+    deselect();
     // select next prompt
     if (curr[1] + 1 >= promptDir[curr[0]].length) {
         curr[0]++;
