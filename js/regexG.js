@@ -5,6 +5,8 @@ const promptText = document.getElementById("prompt");
 const counter = document.getElementById("counter");
 const sub = document.getElementById("subBtn");
 const nxt = document.getElementById("nxtBtn");
+const sbar = document.getElementById("sidebar");
+const main = document.getElementById("mainArea");
 const nMenu = document.getElementById("navMenu");
 const ref = document.getElementById('ref')
 const refBtn = document.getElementById('refBtn')
@@ -14,7 +16,9 @@ let inRegex = /^$/;
 let count = 0;
 
 let promptCat = [];
-let promptDir = [[]];
+let promptDir = [
+    []
+];
 let curr = [0, 0];
 let promptStr = '';
 let toMatch = [];
@@ -25,7 +29,7 @@ init();
 function init() {
     loadPromptDir();
 
-    $('#textbox').keypress(function (e) {
+    $('#textbox').keypress(function(e) {
         if (e.which == 13) { // Enter key
             readRegex();
             console.log(inText);
@@ -33,12 +37,12 @@ function init() {
         }
     });
 
-    $('#textbox').keyup(function (e) {
+    $('#textbox').keyup(function(e) {
         readRegex();
         console.log(inText);
     });
 
-    ref.addEventListener('shown.bs.modal', function () {
+    ref.addEventListener('shown.bs.modal', function() {
         refBtn.focus()
     })
 }
@@ -53,12 +57,12 @@ function readRegex() {
 
     clearCase();
     for (let s of toMatch) {
-        (inRegex.test(s)) ? s = '\u2713 ' + s : s = '\u274C' + s;
+        (inRegex.test(s)) ? s = '\u2713 ' + s: s = '\u274C' + s;
         addCase(s, match);
     }
 
     for (let s of toNotMatch) {
-        (inRegex.test(s)) ? s = '\u2713 ' + s : s = '\u274C' + s;
+        (inRegex.test(s)) ? s = '\u2713 ' + s: s = '\u274C' + s;
         addCase(s, notMatch);
     }
 }
@@ -100,6 +104,7 @@ function setNextPrompt() {
 }
 
 function loadCurr() {
+    select();
     // load current prompt
     doGetPrompt('https://raw.githubusercontent.com/yin132/regex-game/main/prompts/' +
         promptCat[curr[0]] + '/' + promptDir[[curr[0]]][curr[1]] + '.txt');
@@ -179,29 +184,50 @@ function loadPromptDir() {
             }
             promptDir[cat].push(buf[i]);
         }
-        loadCurr();
         loadNav();
+        loadCurr();
     });
 }
 
 function loadPrompt(c, p) {
+    deselect();
     curr = [c, p];
     loadCurr();
+}
+
+function select() {
+    // document.getElementById("p-" + curr[0] + "-" + curr[1]).style.backgroundColor = '#fff';
+    document.getElementById("p-" + curr[0] + "-" + curr[1]).style.color = '#fff';
+}
+
+function deselect() {
+    document.getElementById("p-" + curr[0] + "-" + curr[1]).style.color = '#212519';
+    // document.getElementById("p-" + curr[0] + "-" + curr[1]).style.backgroundColor = 'rgb(187, 205, 255)';
+}
+
+function toggleNav() {
+    if (sbar.style.width < '250px') {
+        sbar.style.width = '250px';
+        main.style.marginLeft = '250px';
+    } else {
+        sbar.style.width = '0px';
+        main.style.marginLeft = '0px';
+    }
 }
 
 function loadNav() {
     $('#' + nMenu.id).children('li').remove();
     for (let i = 0; i < promptCat.length; i++) {
         $('#' + nMenu.id).append(`<li class="mb-1">
-        <a href="#`+ promptCat[i] + `" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-            <span class="ms-1 d-none d-sm-inline" style="color:#212519">`+ promptCat[i] + `</span> </a>
-        <ul class="collapse nav flex-column ms-1" id="`+ promptCat[i] + `">
+        <a href="#` + promptCat[i] + `" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+            <span class="ms-1 d-none d-sm-inline">` + promptCat[i] + `</span> </a>
+        <ul class="collapse nav flex-column ms-1" id="` + promptCat[i] + `">
         </ul>
     </li>`);
         for (let k = 0; k < promptDir[i].length; k++) {
             $('#' + promptCat[i]).append(`<li style="padding-left: 15px">
-                    <a href="#" onclick="loadPrompt(`+ i + `,` + k + `)"
-                    class="nav-link px-0"> <span class="d-none d-sm-inline" style="color:#212519">`+ promptDir[i][k] + `</span></a>
+                    <a href="#" onclick="loadPrompt(` + i + `,` + k + `)" id="p-` + i + `-` + k + `"
+                    class="nav-link px-0"> <span class="d-none d-sm-inline" >` + promptDir[i][k] + `</span></a>
                 </li>`);
         }
     }

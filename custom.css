@@ -2,10 +2,35 @@
     color: #fff;
     background-color: #0d6efd;
     border-color: #fff;
-    padding: 0.7rem 1rem;
+    padding: 0.72rem 1rem;
 }
 
-.navbar-toggler-icon-cust{
+.navsbar {
+    width: 0px;
+    height: 100%;
+    margin-left: 0px;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 1;
+    transition: all 0.5s;
+    background-color: rgb(187, 205, 255);
+}
+
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+    color: #212519;
+    text-decoration: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+    color: #212519;
+}
+
+.navbar-toggler-icon-cust {
     display: inline-block;
     width: 1.5em;
     height: 1.5em;
