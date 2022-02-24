@@ -3,7 +3,7 @@ MATCH
 hello w0rld
 hello w5r7d
 hello w9rad
-hello w7r-d
+hello w7r_d
 NOT
 juice w0rld
 hello world
