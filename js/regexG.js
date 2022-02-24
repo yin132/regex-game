@@ -28,17 +28,19 @@ function init() {
     $('#textbox').keypress(function (e) {
         if (e.which == 13) { // Enter key
             readRegex();
+            console.log(inText);
             return false;
-        } else {
-            readRegex();
         }
     });
 
+    $('#textbox').keyup(function (e) {
+        readRegex();
+        console.log(inText);
+    });
 
-
-ref.addEventListener('shown.bs.modal', function () {
-  refBtn.focus()
-})
+    ref.addEventListener('shown.bs.modal', function () {
+        refBtn.focus()
+    })
 }
 
 function readRegex() {
@@ -192,14 +194,14 @@ function loadNav() {
     for (let i = 0; i < promptCat.length; i++) {
         $('#' + nMenu.id).append(`<li class="mb-1">
         <a href="#`+ promptCat[i] + `" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-            <span class="ms-1 d-none d-sm-inline">`+ promptCat[i] + `</span> </a>
-        <ul class="collapse show nav flex-column ms-1" id="`+ promptCat[i] + `">
+            <span class="ms-1 d-none d-sm-inline" style="color:#212519">`+ promptCat[i] + `</span> </a>
+        <ul class="collapse nav flex-column ms-1" id="`+ promptCat[i] + `">
         </ul>
     </li>`);
         for (let k = 0; k < promptDir[i].length; k++) {
             $('#' + promptCat[i]).append(`<li style="padding-left: 15px">
                     <a href="#" onclick="loadPrompt(`+ i + `,` + k + `)"
-                    class="nav-link px-0"> <span class="d-none d-sm-inline">`+ promptDir[i][k] + `</span></a>
+                    class="nav-link px-0"> <span class="d-none d-sm-inline" style="color:#212519">`+ promptDir[i][k] + `</span></a>
                 </li>`);
         }
     }
