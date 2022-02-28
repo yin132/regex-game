@@ -10,6 +10,9 @@ const main = document.getElementById("mainArea");
 const nMenu = document.getElementById("navMenu");
 const ref = document.getElementById('ref')
 const refBtn = document.getElementById('refBtn')
+const custFile = document.getElementById('formFile');
+const custUrl = document.getElementById('urlText');
+
 
 let inText = '';
 let inRegex = /^$/;
@@ -233,4 +236,8 @@ function loadNav() {
                 </li>`);
         }
     }
+}
+
+function subFile() {
+
 }

@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="custom.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 </head>
 
 <body>
     <div class="container-fluid p-0 m-0">
         <nav id="sidebar" class="p-0 m-0 navsbar">
             <div class="p-4 list-group min-vh-100">
-                <a href="#" class="align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom" data-bs-parent=" #sidebar" style="padding-top: 10px;"><span class="fs-5 fw-semibold">Prompts</span></a>
+                <a href="#" class="pb-3 mb-3 link-dark text-decoration-none border-bottom" data-bs-parent=" #sidebar" style="padding-top: 10px;">
+                    <span class="fs-5 fw-semibold">Prompts</span>
+                </a>
                 <ul id="navMenu" class="list-unstyled ps-0">
                     <!-- auto populated -->
                     <li class="mb-1">
@@ -30,19 +30,22 @@
                         </ul>
                     </li>
                 </ul>
+                <a href="#" class="pb-3 mb-3 link-dark text-decoration-none border-top" data-bs-target="#custPrompt" data-bs-toggle="modal" style="padding-top: 10px;" aria-haspopup="true">
+                    <span class="fs-5 fw-semibold">Upload Custom</span>
+                </a>
             </div>
         </nav>
         <main id="mainArea" class="p-0" style="margin: 0; transition: all 0.5s;">
             <div class="container-fluid p-5 bg-primary text-white text-center">
                 <div data-inline="true" style="float: left;">
                     <button data-bs-target="#sidebar" onclick="toggleNav()" class="btn btn-nav slide-trigger" aria-controls="#sidebar" aria-haspopup="true">
-            <i class="fa fa-bars fa-2xl"></i>
-          </button>
+                        <i class="fa fa-bars fa-2xl"></i>
+                    </button>
                 </div>
                 <div data-inline="true" style="float: right">
                     <button type="button" data-bs-target="#ref" data-bs-toggle="modal" class="btn btn-nav" aria-haspopup="true">
-            <i class="fa fa-question-circle fa-2xl"></i>
-          </button>
+                        <i class="fa fa-question-circle fa-2xl"></i>
+                    </button>
                 </div>
                 <h1>Regex Practice</h1>
             </div>
@@ -195,7 +198,33 @@
             </div>
         </div>
     </div>
+
+    <div id="custPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Format a txt file (or url to a txt file) with the prompt on the first line, followed by 'MATCH' in a line, then a matching case in each line, followed by 'NOT' in a line, followed by a nonmatching case in each line
+                    </p>
+                    <div class="mb-3 input-group">
+                        <input id="urlText" type="text" class="form-control" placeholder="Url to txt">
+                        <button id="urlBtn" onclick="subLink()" class="btn btn-outline-primary" type="button">Submit</button>
+                    </div>
+                    <div class="mb-3 input-group">
+                        <!-- <label for="formFile" class="form-label">Default file input example</label> -->
+                        <input class="form-control" type="file" id="formFile">
+                        <button id="formBtn" onclick="subFile()" class="btn btn-outline-primary" type="button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
     <script src="js/regexG.js"></script>
+    <script src="js/customPrompt.js"></script>
 </body>
 
 </html>
