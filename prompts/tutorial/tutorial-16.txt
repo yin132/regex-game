@@ -1,4 +1,4 @@
-There are also speical symbols to use as shortcuts, find these in the reference opened from the button in the top right
+There are also special symbols to use as shortcuts, find these in the reference opened from the button in the top right
 MATCH
 hello w0rld
 hello w5r7d
