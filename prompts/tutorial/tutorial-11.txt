@@ -1,4 +1,4 @@
-The pipe '|' can be used to choose exactly one option
+The pipe '( | )' can be used to choose exactly one option
 MATCH
 blue
 red
