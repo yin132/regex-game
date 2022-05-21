@@ -1,4 +1,4 @@
-Brackets '[]' can be used to choose exactly one character (you cannot use parentheses inside a [])
+Brackets '[]' can be used to choose exactly one character ([] will read everything inside as characters)
 MATCH
 bobcat
 bobrat
