@@ -2,5 +2,6 @@
 MATCH
 .*[\
 NOT
+s*[\
 cats
 1010
