@@ -9,5 +9,6 @@ sat
 NOT
 chat
 cats
+vet
 computer science
 110
