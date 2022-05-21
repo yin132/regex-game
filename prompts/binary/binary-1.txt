@@ -1,4 +1,4 @@
-Match only a binary number
+Match only any binary number
 MATCH
 1
 0
