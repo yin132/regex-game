@@ -9,5 +9,7 @@ acrobat
 NOT
 hello
 world
+vet
+can
 natural
 recursion
