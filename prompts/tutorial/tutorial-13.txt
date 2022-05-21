@@ -7,5 +7,5 @@ bob6at
 NOT
 bobcat
 bobrat
-bobmat
+course
 bob@ats
